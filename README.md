@@ -8,7 +8,7 @@
 3. Na kartě **Actions** vyberte **Deploy static site to GitHub Pages** a klikněte na **Run workflow**. Nasazení se spouští pouze ručně.
 4. Adresu zveřejněného webu najdete v dokončeném běhu nasazení.
 
-Workflow instaluje Bun závislosti podle `bun.lock`, předrenderuje stránku a publikuje pouze **`dist/client`** včetně `index.html`. Žádný serverový výstup se nenasazuje. Hlavní fotografie je vložená přímo do kódu jako datová URL; doplňkové fotografie i písma jsou součástí statického výstupu. Místní spuštění ani Pages nepotřebují Lovable úložiště ani stahování fotografie při nasazení.
+Workflow instaluje Bun závislosti podle `bun.lock`, předrenderuje stránku a publikuje pouze **`dist/client`** včetně `index.html`. Žádný serverový výstup se nenasazuje. Všechny fotografie jsou běžné lokální soubory v `src/assets` a spolu s písmy jsou součástí statického výstupu. Místní spuštění ani Pages nepotřebují Lovable úložiště ani stahování fotografie při nasazení.
 
 Základní cesta se automaticky odvozuje z `actions/configure-pages` a předá jako `PAGES_BASE_PATH`, například `/nazev-repozitare/`. Funguje také kořen domény. V náhledu Lovable zůstává základní cesta `/`.
 
@@ -16,7 +16,7 @@ Základní cesta se automaticky odvozuje z `actions/configure-pages` a předá j
 - **Kontakty a oba sezónní rozpisy:** `src/data/pub.ts`. Aktualizujte data období i řádky hodin společně.
 - **Texty stránky a ověřená nabídka:** `src/routes/index.tsx`.
 - **Barvy, písmo a vzhled:** `src/styles.css`.
-- **Fotografie:** oba ořezy dodané hlavní fotografie jsou vložené jako Base64 datové URL v `src/lib/pub-images.ts`. Dvě doplňkové fotografie v `src/assets` jsou generované a na stránce označené jako ilustrační.
+- **Fotografie:** oba ořezy dodané hlavní fotografie jsou běžné soubory `src/assets/facade-desktop.webp` a `src/assets/facade-mobile.webp`, importované přes `src/lib/pub-images.ts`. Dvě doplňkové fotografie v `src/assets` jsou generované a na stránce označené jako ilustrační.
 - **Ikona záložky:** `public/favicon.png`, vytvořená ze stejného loga AHOJ jako v záhlaví stránky.
 
 ## Vývoj a kontrola mimo Lovable
