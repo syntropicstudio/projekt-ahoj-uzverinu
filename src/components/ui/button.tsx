@@ -9,8 +9,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        pub: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm shadow-none",
-        pubOutline: "border border-border bg-transparent text-foreground hover:bg-secondary rounded-sm shadow-none",
+        pub: "bg-primary text-primary-foreground hover:bg-primary/90 rounded-sm btn-stitch",
+        pubOutline: "border border-dashed border-primary/60 bg-transparent text-foreground hover:bg-secondary rounded-sm shadow-none",
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
