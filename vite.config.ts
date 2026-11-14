@@ -9,8 +9,8 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const pages = process.env.VITE_PAGES_BUILD === 'true';
-const base = pages ? (process.env.PAGES_BASE_PATH || '/') : '/';
+const pages = process.env['VITE_PAGES_BUILD'] === 'true';
+const base = pages ? (process.env['PAGES_BASE_PATH'] || '/') : '/';
 
 export default defineConfig({
   vite: { base },
