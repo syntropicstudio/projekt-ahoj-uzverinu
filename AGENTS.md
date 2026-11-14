@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Keep the presentation in the index route with native section anchors, because this site is explicitly a single static page.
+- Keep contacts and seasonal schedules in one browser-safe data module, because owners must be able to update both periods together.
+- Enable explicit index prerendering and disable Nitro only for Pages builds, because GitHub Pages serves HTML and client assets without an application server.
+- Derive the Pages base path from deployment configuration and use local image copies for Pages, because repository subpaths must work without Lovable asset-serving infrastructure.

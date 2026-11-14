@@ -8,6 +8,8 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "@fontsource-variable/montagu-slab";
+@import "@fontsource-variable/source-sans-3";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -30,6 +32,8 @@
  */
 
 @theme inline {
+  --font-sans: 'Source Sans 3 Variable', sans-serif;
+  --font-display: 'Montagu Slab Variable', Georgia, serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -73,26 +77,28 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.375rem;
+  --background: oklch(0.975 0.013 83);
+  --foreground: oklch(0.29 0.035 51);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
+  --primary: oklch(0.48 0.112 40);
+  --primary-foreground: oklch(0.985 0.009 83);
+  --secondary: oklch(0.935 0.023 83);
   --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.945 0.017 83);
+  --muted-foreground: oklch(0.46 0.03 57);
+  --accent: oklch(0.93 0.028 75);
+  --accent-foreground: oklch(0.29 0.035 51);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.85 0.026 75);
+  --input: oklch(0.85 0.026 75);
+  --ring: oklch(0.48 0.112 40);
+  --footer: oklch(0.27 0.031 51);
+  --footer-foreground: oklch(0.96 0.018 83);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -151,5 +157,116 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
   }
 }
+
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+* { letter-spacing: 0; }
+a, button { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--ring); outline-offset: 5px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; }
+.page-width { width: min(1184px, calc(100% - 96px)); margin-inline: auto; }
+.site-header { border-bottom: 1px solid var(--border); }
+.header-inner { min-height: 92px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.brand { color: var(--foreground); text-decoration: none; display: flex; align-items: center; gap: 18px; }
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 38px; line-height: 1; }
+.brand-note { border-left: 1px solid var(--border); padding-left: 18px; font-size: 13px; line-height: 1.45; color: var(--muted-foreground); }
+.desktop-nav { display: flex; align-items: center; gap: 26px; }
+.nav-link { text-decoration: none; color: var(--foreground); font-size: 15px; padding-block: 14px; }
+.nav-link:hover { color: var(--primary); }
+.header-phone { border-left: 1px solid var(--border); padding-left: 22px; display: flex; gap: 8px; align-items: center; font-size: 15px; color: var(--primary); text-decoration: none; font-weight: 600; }
+.mobile-menu-toggle { display: none; }
+.mobile-nav { display: none; }
+.intro { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 60px; padding-block: 54px 42px; }
+.eyebrow { color: var(--primary); font-size: 12px; font-weight: 600; text-transform: uppercase; display: flex; align-items: center; gap: 9px; margin-bottom: 15px; }
+.intro h1 { font-size: 55px; line-height: 1.13; max-width: 650px; margin: 0; }
+.intro h1 span { display: block; color: var(--primary); }
+.intro-description { padding-top: 25px; }
+.intro-description p { margin: 0 0 24px; font-size: 19px; line-height: 1.6; max-width: 430px; }
+.hero-photo { width: 100%; height: 370px; object-fit: cover; object-position: center 58%; display: block; }
+.photo-caption { display: flex; align-items: center; gap: 8px; margin: 12px 0 0; color: var(--muted-foreground); font-size: 13px; }
+.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 32px; }
+.section-heading h2 { font-size: 35px; line-height: 1.25; margin: 0; }
+.section-heading p { font-size: 16px; color: var(--muted-foreground); margin: 0 0 4px; }
+.hours-section { padding-block: 62px 68px; }
+.hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.hours-panel { padding: 28px 30px; border: 1px solid var(--border); border-radius: 4px; }
+.hours-panel:first-child { background: var(--secondary); }
+.season-heading { display: flex; align-items: center; gap: 14px; }
+.season-heading svg { color: var(--primary); }
+.season-heading h3 { font-size: 24px; margin: 0; }
+.season-heading p { margin: 4px 0 0; color: var(--muted-foreground); font-size: 14px; }
+.season-period { margin: 23px 0 15px; color: var(--primary); font-size: 15px; font-weight: 600; }
+.hours-panel table { width: 100%; border-collapse: collapse; font-size: 17px; }
+.hours-panel th { font-weight: 400; text-align: left; }
+.hours-panel td { text-align: right; font-weight: 600; white-space: nowrap; }
+.hours-panel th, .hours-panel td { padding-block: 10px; border-top: 1px solid var(--border); }
+.hours-panel .closed { color: var(--muted-foreground); font-weight: 400; }
+.about-section { background: var(--secondary); padding-block: 70px; }
+.editorial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.editorial-copy h2 { font-size: 36px; line-height: 1.32; margin: 0 0 24px; }
+.editorial-copy p { color: var(--muted-foreground); line-height: 1.75; margin: 0 0 18px; }
+.editorial-copy .lead { color: var(--foreground); font-size: 21px; line-height: 1.6; }
+.editorial-photo { width: 100%; aspect-ratio: 1.5; height: auto; object-fit: cover; display: block; border-radius: 3px; }
+figure { margin: 0; }
+.illustration-note { font-size: 12px; color: var(--muted-foreground); margin-top: 9px; }
+.offer-section { padding-block: 78px; }
+.offer-list { margin: 22px 0; }
+.offer-row { display: flex; justify-content: space-between; gap: 20px; padding-block: 12px; border-bottom: 1px solid var(--border); }
+.offer-row strong { font-weight: 600; white-space: nowrap; }
+.offer-row small { font-size: 14px; color: var(--muted-foreground); }
+.offer-source { font-size: 13px; line-height: 1.5; color: var(--muted-foreground); }
+.contact-section { border-top: 1px solid var(--border); padding-block: 65px 75px; }
+.contact-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 40px; }
+.contact-grid h2 { font-size: 34px; margin: 0 0 18px; }
+.contact-grid h3 { font-family: var(--font-sans); font-size: 14px; color: var(--primary); margin: 4px 0 18px; font-weight: 600; }
+.contact-grid p { line-height: 1.7; margin: 0 0 20px; }
+.contact-link { color: var(--foreground); text-decoration-thickness: 1px; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.site-footer { background: var(--footer); color: var(--footer-foreground); padding-block: 30px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.footer-inner p { font-size: 13px; margin: 0; }
+.footer-brand { font-family: var(--font-display); font-size: 25px; font-weight: 600; }
+.skip-link { position: fixed; top: 10px; left: 10px; background: var(--background); padding: 10px; z-index: 100; transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+@media (max-width: 1020px) {
+  .page-width { width: calc(100% - 64px); }
+  .brand-note, .header-phone { display: none; }
+  .intro { gap: 30px; }
+  .intro h1 { font-size: 45px; }
+  .editorial-grid { gap: 40px; }
+}
+@media (max-width: 640px) {
+  html { scroll-padding-top: 20px; }
+  .page-width { width: calc(100% - 40px); }
+  .header-inner { min-height: 76px; }
+  .brand-name { font-size: 31px; }
+  .desktop-nav { display: none; }
+  .mobile-menu-toggle { display: inline-flex; }
+  .mobile-nav { display: flex; flex-direction: column; padding-bottom: 18px; }
+  .mobile-nav .nav-link { padding: 12px 4px; border-top: 1px solid var(--border); }
+  .intro { grid-template-columns: 1fr; gap: 0; padding-block: 34px 28px; }
+  .intro h1 { font-size: 38px; }
+  .intro-description { padding-top: 21px; }
+  .intro-description p { font-size: 17px; margin-bottom: 20px; }
+  .hero-photo { height: 260px; object-position: center; }
+  .photo-caption { font-size: 12px; }
+  .hours-section { padding-block: 38px 44px; }
+  .section-heading { align-items: start; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .section-heading h2 { font-size: 29px; }
+  .hours-grid { grid-template-columns: 1fr; gap: 18px; }
+  .hours-panel { padding: 23px 21px; }
+  .hours-panel table { font-size: 16px; }
+  .season-heading h3 { font-size: 22px; }
+  .editorial-grid { grid-template-columns: 1fr; gap: 28px; }
+  .editorial-copy h2 { font-size: 29px; }
+  .about-section, .offer-section { padding-block: 44px; }
+  .offer-section figure { order: 2; }
+  .contact-section { padding-block: 44px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 25px; }
+  .contact-grid h2 { font-size: 29px; }
+  .footer-inner { flex-direction: column; align-items: start; gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
