@@ -33,5 +33,5 @@ use the editor.
 - Keep the presentation in the index route with native section anchors, because this site is explicitly a single static page.
 - Keep contacts and seasonal schedules in one browser-safe data module, because owners must be able to update both periods together.
 - Enable explicit index prerendering and disable Nitro only for Pages builds, because GitHub Pages serves HTML and client assets without an application server.
-- Derive the Pages base path from deployment configuration and embed the main photograph as data URLs in the browser-safe image module, because local development and repository subpaths must work without Lovable asset-serving infrastructure or deployment-time downloads.
+- Derive the Pages base path from deployment configuration and import the main photograph as ordinary local WebP files from src/assets through the browser-safe image module, because local development and repository subpaths must work without Lovable asset-serving infrastructure or deployment-time downloads.
 - Derive the favicon from the rendered header wordmark and reference it with the deployment base path, because the tab icon must match the brand on local and Pages deployments.
