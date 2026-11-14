@@ -22,7 +22,6 @@ jobs:
       - uses: actions/configure-pages@v5
         id: pages
       - run: bun install --frozen-lockfile
-      - run: node scripts/prepare-pages-assets.mjs
       - run: bun run build
         env:
           VITE_PAGES_BUILD: 'true'

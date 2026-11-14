@@ -8,7 +8,7 @@
 3. Na kartě **Actions** vyberte **Deploy static site to GitHub Pages** a klikněte na **Run workflow**. Nasazení se spouští pouze ručně.
 4. Adresu zveřejněného webu najdete v dokončeném běhu nasazení.
 
-Workflow instaluje Bun závislosti podle `bun.lock`, stáhne lokální kopie hlavní fotografie, předrenderuje stránku a publikuje pouze **`dist/client`** včetně `index.html`. Žádný serverový výstup se nenasazuje. Fotografie i písma jsou na Pages součástí statického výstupu; návštěvník nepotřebuje Lovable runtime ani externí fontové služby.
+Workflow instaluje Bun závislosti podle `bun.lock`, předrenderuje stránku a publikuje pouze **`dist/client`** včetně `index.html`. Žádný serverový výstup se nenasazuje. Hlavní fotografie je vložená přímo do kódu jako datová URL; doplňkové fotografie i písma jsou součástí statického výstupu. Místní spuštění ani Pages nepotřebují Lovable úložiště ani stahování fotografie při nasazení.
 
 Základní cesta se automaticky odvozuje z `actions/configure-pages` a předá jako `PAGES_BASE_PATH`, například `/nazev-repozitare/`. Funguje také kořen domény. V náhledu Lovable zůstává základní cesta `/`.
 
@@ -16,7 +16,8 @@ Základní cesta se automaticky odvozuje z `actions/configure-pages` a předá j
 - **Kontakty a oba sezónní rozpisy:** `src/data/pub.ts`. Aktualizujte data období i řádky hodin společně.
 - **Texty stránky a ověřená nabídka:** `src/routes/index.tsx`.
 - **Barvy, písmo a vzhled:** `src/styles.css`.
-- **Fotografie:** hlavní snímek je ořez dodané fotografie, uložený jako spravované assety. `scripts/prepare-pages-assets.mjs` při nasazení vytvoří kopie v `public/pages-media`. Dvě doplňkové fotografie v `src/assets` jsou generované a na stránce označené jako ilustrační.
+- **Fotografie:** oba ořezy dodané hlavní fotografie jsou vložené jako Base64 datové URL v `src/lib/pub-images.ts`. Dvě doplňkové fotografie v `src/assets` jsou generované a na stránce označené jako ilustrační.
+- **Ikona záložky:** `public/favicon.png`, vytvořená ze stejného loga AHOJ jako v záhlaví stránky.
 
 ## Vývoj a kontrola mimo Lovable
 Potřebujete Bun a Node.js 22.
@@ -27,7 +28,6 @@ bun run test
 ```
 Statický build pro podcestu:
 ```sh
-node scripts/prepare-pages-assets.mjs
 VITE_PAGES_BUILD=true PAGES_BASE_PATH=/moje-hospoda/ bun run build
 mkdir -p /tmp/ahoj-pages/moje-hospoda
 cp -R dist/client/. /tmp/ahoj-pages/moje-hospoda/
